@@ -7,7 +7,13 @@
         "name": "Default",
         "detail": "",
         "description": "Test",
-        "hidden": [".vscode/", "backend/node_modules/", "backend/dist/"]
+        "hidden": [
+          ".vscode/",
+          "backend/node_modules/",
+          "backend/dist/",
+          "front/node_modules/",
+          "front/.next/"
+        ]
       },
       {
         "name": "Strict",
@@ -24,7 +30,9 @@
     "**/.DS_Store": true,
     ".vscode/": true,
     "backend/node_modules/": true,
-    "backend/dist/": true
+    "backend/dist/": true,
+    "front/node_modules/": true,
+    "front/.next/": true
   },
   "hidefiles.selectedProfile": "Default"
 }
