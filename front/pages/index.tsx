@@ -1,10 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { listEvents } from 'app/slices/eventsSlice';
 import { listTrucks, listTrucksApp } from 'app/slices/truckSlice';
 import TrucksSidebar from 'components/Calendar/TrucksSidebar/TrucksSidebar';
-import { TruckInterface } from 'interfaces/truckInterface';
 import Link from 'next/link';
-// import type { NextPage } from 'next';
 
 import { useEffect } from 'react';
 
