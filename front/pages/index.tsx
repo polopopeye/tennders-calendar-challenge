@@ -24,13 +24,13 @@ const Home = () => {
     <>
       <h1 className="title"> TRUCKS</h1>
       <Link href="/truck/create">
-        <button style={{ padding: '10px', margin: '10px' }}>
+        <button id="createTruckBtn" style={{ padding: '10px', margin: '10px' }}>
           Create New Truck
         </button>
       </Link>
 
       <Link href="/event/create">
-        <button style={{ padding: '10px', margin: '10px' }}>
+        <button id="createEventBtn" style={{ padding: '10px', margin: '10px' }}>
           Create New Event
         </button>
       </Link>

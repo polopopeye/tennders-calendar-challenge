@@ -1,13 +1,8 @@
-## DB
-
-```
-user = root
-pw = 1234
-```
-
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
+postman: https://www.getpostman.com/collections/452b158a28bdc7f0239c
 
 ## Installation
 

@@ -125,6 +125,7 @@ const Create = () => {
         }}
       >
         <button
+          id="createTruckBtn"
           onClick={() => {
             createNewTruck(
               {

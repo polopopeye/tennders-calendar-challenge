@@ -54,6 +54,7 @@ const Create = () => {
         <div>
           <span> Select Truck: </span>
           <select
+            id="selectTruck"
             onChange={(e) => {
               setTruckId(e.target.value);
             }}
@@ -92,6 +93,7 @@ const Create = () => {
         <div>
           <span> Select Time: </span>
           <select
+            id="selectTime"
             onChange={(e) => {
               setTime(e.target.value as EventInterface['time']);
             }}
@@ -123,6 +125,7 @@ const Create = () => {
         }}
       >
         <button
+          id="createEventBtn"
           onClick={() => {
             createNewEvent(
               {
@@ -147,14 +150,3 @@ const Create = () => {
 };
 
 export default Create;
-//             });
-//           }}
-//         >
-//           Create new event
-//         </button>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Create;
