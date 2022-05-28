@@ -8,56 +8,79 @@ import {
 } from '../dtos/truck.dtos';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TruckEntity } from '../entities/truck.entity';
-import { response } from 'express';
+
+import { RedisProvider } from '../../database/redis.provider';
 
 @Injectable()
 export class TruckService {
   constructor(
     @InjectRepository(TruckEntity)
     private truckRepository: Repository<TruckEntity>,
+    private redisClient: RedisProvider,
   ) {}
-
-  //   TODO: CHANGE ID BY PROPER OBJECTID
 
   async findAll(params?: PaginationTruckDTO) {
     const { limit = 100, offset = 0 } = params;
-    return this.truckRepository.find({
-      order: {
-        companyName: 'DESC',
-      },
-      skip: offset,
-      take: limit,
-    });
+    const tableName = this.truckRepository.metadata.tableName;
+    const redisData = await this.redisClient.get(tableName);
+
+    if (!redisData) {
+      const dbData = await this.truckRepository.find({
+        order: {
+          companyName: 'DESC',
+        },
+        skip: offset,
+        take: limit,
+      });
+      if (dbData) this.redisClient.update(tableName, dbData);
+      console.log('served from db');
+      return dbData;
+    }
+
+    console.log('served from redis');
+    return redisData;
   }
 
   async findOne(id: any) {
-    const truck = await this.truckRepository.findOne(id);
-    if (!truck) throw new NotFoundException(`Tea #${id} not found`);
+    const tableName = this.truckRepository.metadata.tableName + id;
+    const redisData = await this.redisClient.get(tableName);
 
-    return truck;
+    if (!redisData) {
+      const dbData = await this.truckRepository.findOne(id);
+      if (dbData) this.redisClient.update(tableName, dbData);
+      console.log('served from db');
+      return dbData;
+    }
+
+    console.log('served from redis');
+    return redisData;
   }
 
   create(data: CreateTruckDto) {
     const newTruck = this.truckRepository.create(data);
 
+    const tableName = this.truckRepository.metadata.tableName;
+    this.redisClient.delete(tableName);
+
     return this.truckRepository.save(newTruck);
   }
 
   async update(id: any, changes: UpdateTruckDTO) {
-    const tea = await this.truckRepository.findOne(id);
-    if (!tea) throw new NotFoundException(`Truck #${id} not found`);
-    this.truckRepository.merge(tea, changes);
-    return this.truckRepository.save(tea);
+    const truck = await this.truckRepository.findOne(id);
+    if (!truck) throw new NotFoundException(`Truck #${id} not found`);
+    this.truckRepository.merge(truck, changes);
+    return this.truckRepository.save(truck);
   }
 
   async remove(id: any) {
-    const tea = await this.truckRepository.findOne(id);
-    if (!tea) throw new NotFoundException(`Tea #${id} not found`);
+    const truck = await this.truckRepository.findOne(id);
+    if (!truck) throw new NotFoundException(`Truck #${id} not found`);
     return this.truckRepository.delete(id);
   }
 
   async search(searchString: string, limit: number, offset: number) {
-    let response;
+    // TODO: ADD REDIS LOGIC FOR THE SEARCH
+    let response: string | any[];
     response = await this.truckRepository.find({
       where: {
         companyName: Like(`%${searchString}%`),

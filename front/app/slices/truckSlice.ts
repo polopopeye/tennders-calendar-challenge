@@ -33,16 +33,14 @@ export const trucksSlice = createSlice({
       .addCase(listTrucks.pending, (state: TrucksState) => {
         state.pending = true;
       })
-      //   TODO: CHECK IF THIS WORK
-      .addCase(listTrucks.fulfilled, (state: TrucksState, payload: any) => {
-        console.log(
-          '🚀 ~ file: truckSlice.ts ~ line 38 ~ .addCase ~ payload',
-          payload
-        );
-        // const { data } = payload;
-        state.pending = false;
-        state.data = payload;
-      })
+      .addCase(
+        listTrucks.fulfilled,
+        (state: TrucksState, response: { payload: any }) => {
+          const { payload } = response;
+          state.pending = false;
+          state.data = payload;
+        }
+      )
       .addCase(listTrucks.rejected, (state: TrucksState) => {
         state.pending = false;
         state.error = true;

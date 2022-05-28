@@ -27,7 +27,7 @@ export class TruckController {
 
   @Get()
   @ApiOperation({ summary: 'List of trucks' })
-  getTeas(@Query() params: PaginationTruckDTO) {
+  getTrucks(@Query() params: PaginationTruckDTO) {
     return this.truckService.findAll(params);
   }
 

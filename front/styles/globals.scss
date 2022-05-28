@@ -1,0 +1,55 @@
+@import 'mixins';
+
+$color-primary: blueviolet;
+$color-secondary: cyan;
+
+.title {
+  color: $color-primary;
+  border-bottom: solid 2px darken($color-primary, 10);
+
+  strong {
+    color: $color-secondary;
+  }
+}
+
+.container {
+  @include mobile() {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  @include tablet() {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  @include laptop() {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  @include desktop() {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  overflow-x: hidden;
+}
+
+/* DEFAULT STYLES */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

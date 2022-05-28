@@ -1,5 +1,5 @@
 export type TruckInterface = {
-  id: string;
+  id?: string;
   available: boolean;
 
   companyName: string;
@@ -18,6 +18,6 @@ export type TruckInterface = {
     latitude: number;
   };
 
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 };

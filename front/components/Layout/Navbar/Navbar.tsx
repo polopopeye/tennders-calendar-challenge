@@ -1,18 +1,20 @@
+import Link from 'next/link';
 import React from 'react';
-// import Logo from './modules/Logo';
-
-// import NavButton from './modules/NavButton';
+import Logo from './modules/Logo';
 
 const Navbar = () => {
   return (
     <>
-      <div className="">
-        HOLA SOY UN HEADER
-        {/* <Logo /> */}
-        <div className="grid grid-cols-2 content-center ">
-          {/* <NavButton text="Our Coffe" href="/coffees" />
-          <NavButton text="Our Tea" href="/teas" /> */}
-        </div>
+      <div
+        style={{
+          width: '100%',
+          margin: 'auto',
+          textAlign: 'center',
+          padding: '10px',
+        }}
+      >
+        <Logo />
+        <hr></hr>
       </div>
     </>
   );

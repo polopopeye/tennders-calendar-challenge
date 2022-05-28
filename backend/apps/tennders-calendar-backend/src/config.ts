@@ -5,5 +5,9 @@ export default registerAs('config', () => {
     mongodb: {
       url: process.env.MONGODB_URL,
     },
+    redis: {
+      url: process.env.REDIS_URL,
+      cacheTimeOut: process.env.REDIS_CACHE_TIME_SECONDS,
+    },
   };
 });

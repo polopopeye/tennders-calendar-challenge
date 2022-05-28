@@ -17,15 +17,6 @@
       "compilerOptions": {
         "tsConfigPath": "apps/tennders-calendar-backend/tsconfig.app.json"
       }
-    },
-    "redis_message_transporter": {
-      "type": "application",
-      "root": "apps/redis_message_transporter",
-      "entryFile": "main",
-      "sourceRoot": "apps/redis_message_transporter/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/redis_message_transporter/tsconfig.app.json"
-      }
     }
   }
 }

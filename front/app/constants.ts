@@ -6,5 +6,6 @@ export default {
   baseApiUrl: process.env.BASE_API_URL,
   api: {
     truck: process.env.BASE_API_URL + '/truck',
+    event: process.env.BASE_API_URL + '/events',
   },
 };

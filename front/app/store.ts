@@ -1,9 +1,11 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { eventsSlice } from './slices/eventsSlice';
 import { trucksSlice } from './slices/truckSlice';
 
 export const store = configureStore({
   reducer: {
     trucks: trucksSlice.reducer,
+    events: eventsSlice.reducer,
   },
 });
 
