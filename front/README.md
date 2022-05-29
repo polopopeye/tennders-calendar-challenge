@@ -1,17 +1,21 @@
-# start
+For the front end I went with a nextJS, I implemented redux, I just created 1 unit testing and 2 end-to-end testing, with cypress. Very fews I know...
 
+Live Demo: https://tennders-front.herokuapp.com/
+
+# local installation and initialization
+
+Install dependencies
+```bash
+npm install
 ```
-# install dependencies
-$ yarn
-
-# start next.JS
-$ yarn dev
+Start development enviroment
+```
+npm run dev
 ```
 
-### Enviroment Variables
+Check the enviroment variables
 
-1- check next.config.js
-
+``next.config.js``
 ```
   env: {
     BASE_API_URL: 'http://localhost:3001',
@@ -19,4 +23,6 @@ $ yarn dev
 
 ```
 
-BASE_API_URL => Url to the backend API, without slash
+# Testing
+``npm run test:watch`` to run JEST
+``npm run test:int`` to run Cypress enviroment
