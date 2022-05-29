@@ -42,7 +42,7 @@ npm run dev
 
 
 ### REMOTE DB: 
-This is the remote mongodbmodule, in case to use the remote db delete ssl, and authsource, objects this is due the limitations of the database and the server were is hosted. 
+This is the remote mongodbmodule, in case to use the remote db, please delete ssl, and authsource, objects. this is due the limitations of the database and the server were is hosted. 
 
 ````
 // database.module.ts
